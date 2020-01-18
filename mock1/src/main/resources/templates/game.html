@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8" />
+	<link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+	<!-- <script src="js/bootstrap.min.js"></script> -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script type="text/javascript" src="js/random_deploy.js"></script>
+	<script type="text/javascript" src='../js/jquery.playSound.js'></script>
+	
+	<title>Game</title>
+	<style type="text/css">
+		html,body {height: 1.1em; background: #fff; background-image: url('img/background.jpg');background-size: cover; background-repeat: no-repeat;}
+		img { border: 0;}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="wrapper">
+			<a href="#" style="float: center"><img src="img/logo.png" alt="Logo" title="Battleship2020" /></a>
+			<span id="usernav"><a th:href="@{index}">Logout</a> - <a th:href="@{user}">My Profile<span><img src="img/default-avatar-s.png" width="30px" height="30px"/></span></a></span>
+		</div>
+	</header>
+
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-12">    	    
+	         <div id="logboard">LOG
+	         	<div id="logboardtext"></div>
+	         </div>   
+        </div>
+        <div class="col-lg-4 col-md-8 col-sm-12">    	    
+	         <div id="gameboard1">This is game board 1</div>   
+        </div>
+
+        <div class="col-lg-4 col-md-8 col-sm-12">    	    
+	         <div id="gameboard2">This is game board 2</div>
+        </div>
+        </div>
+    </div>
+    <div style="text-align: center;">
+    	<div class="file btn btn-primary" style="background-color: lightblue; color:#000; opacity: 0.8" >
+			<input type="file" name="file"/>
+			<button>Submit Deploy Code!</button>
+		</div>
+    </div>
+    <div style="text-align: center;">
+    	<div class="file btn btn-primary" style="background-color: lightblue; color:#000; opacity: 0.8" >
+			<input type="file" name="file"/>
+			<button>Submit Fire Code!</button>
+		</div>
+		<div><span><a href="#!" class="btn btn-primary">vs. Computer!</a></span>
+		<span><a href="#!" class="btn btn-primary">vs. Human!</a></span></div>
+		<div><button type="button" class="btn btn-lg btn-danger" id="Start">Start!</button></div>
+	</div>
+
+<script type="text/javascript" src="js/test_deploy.js"></script>
+<script type="text/javascript" src="js/battleship.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<title>User Profile</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<style type="text/css">
+html, body {
+	height: 1.1em;
+	background: #fff;
+	background-image: none;
+}
+
+img {
+	border: 0;
+}
+</style>
+</head>
+
+<body>
+	<header>
+		<div class="wrapper">
+			<a th:href="@{user}"><img src="img/logo.png" alt="Logo" title="Battleship2020" /></a>
+			<span id="usernav">
+			      <a th:href="@{index}">Logout</a> - <a th:href="@{user}">My Profile<span> <img src="img/chiennh2.jpg" width="30px" height="30px" /></span></a>
+			</span>
+		</div>
+	</header>
+
+	<nav>
+		<ul id="n" class="clearfix">
+			<li><a href="#" th:href="@{user}">Profile</a></li>
+			<li><a href="#">Badges</a></li>
+		</ul>
+	</nav>
+	<div class="container" id="main-content">
+		<div class="row">
+			<div class="col-6 no-padding">
+				<form class="form-inline" action="#" th:action="@{/search}" method="get">
+					<input class="form-control mr-sm-2" type="search" name="term"
+						placeholder="Search by last name ..." />
+					<button class="btn btn-primary" type="submit">
+						<i class="fa fa-search"></i> Search
+					</button>
+				</form>
+			</div>
+
+			<div class="col-6 no-padding" style="margin-bottom: 20px">
+				<a href="#"
+					class="btn btn-success float-right"> <i
+					class="fa fa-plus-square"></i> Add User
+				</a>
+			</div>
+		</div>
+
+		<div>
+			<th:block th:if="${#lists.isEmpty(information)}">
+				<h5>No User</h5>
+			</th:block>
+
+			<th:block th:unless="${#lists.isEmpty(information)}">
+				<table class="table table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>No</th>
+							<th>First name</th>
+							<th>Last name</th>
+							<th>Gender</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="info, iterStat: ${information}">
+							<td th:text="${iterStat.count}"></td>
+							<td th:text="${info.firstname}"></td>
+							<td th:text="${info.lastname}"></td>
+							<td th:text="${info.gioitinh}"></td>
+							<td id="actionCol">							
+								<form th:id="'d'+${info.userid}" th:action="@{/delete/{id}(id=${info.userid})}" th:method="post" style="display:none">								
+									<button type="submit" class="mr-sm-2 text-primary delButton">
+										<a href="#"><i class='fas fa-trash' style="color: red"></i></a>
+									</button>
+								</form>							 
+								<a href="#" th:href="@{/edit/{id}(id=${info.userid})}"> <i class='fas fa-edit' style="color: green"></i></a>
+								<a href="#" th:href="@{/play}"><i class='fa fa-gamepad' style="color: blue"></i></a>
+							</td>							
+						</tr>
+					</tbody>
+				</table>
+			</th:block>
+		</div>
+	</div>
+</body>
+</html>
